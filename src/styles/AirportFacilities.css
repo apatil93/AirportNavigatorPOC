@@ -1,0 +1,189 @@
+/* Airport Facilities Component Styles */
+
+.airport-facilities {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.airport-facilities:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+/* Facilities Header */
+.facilities-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.airport-icon {
+  font-size: 20px;
+  color: #007bff;
+}
+
+.airport-info {
+  flex: 1;
+}
+
+.airport-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.total-services {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.no-data {
+  font-size: 14px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Facilities Grid */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.facility-item,
+.facility-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.facility-item:hover,
+.facility-quick-action:hover {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-color: #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+.facility-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.facility-count {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 2px;
+}
+
+.facility-label {
+  font-size: 11px;
+  color: #6c757d;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Facilities Summary */
+.facilities-summary {
+  border-top: 1px solid #e9ecef;
+  padding-top: 12px;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+.stat-text {
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .facilities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 6px;
+  }
+  
+  .facility-item,
+  .facility-quick-action {
+    padding: 10px 6px;
+    min-height: 70px;
+  }
+  
+  .facility-icon {
+    font-size: 20px;
+  }
+  
+  .facility-count {
+    font-size: 16px;
+  }
+  
+  .facility-label {
+    font-size: 10px;
+  }
+  
+  .summary-stats {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .stat-item {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .facilities-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .facility-item,
+  .facility-quick-action {
+    padding: 8px 4px;
+    min-height: 60px;
+  }
+  
+  .facility-icon {
+    font-size: 18px;
+  }
+  
+  .facility-count {
+    font-size: 14px;
+  }
+  
+  .facility-label {
+    font-size: 9px;
+  }
+}

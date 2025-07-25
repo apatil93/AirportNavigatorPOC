@@ -1,0 +1,141 @@
+# Azure DevOps Pipeline for Airport Assistant ChatBot - Simplified Version
+# This version removes environments to avoid authorization issues
+
+trigger:
+  branches:
+    include:
+    - main
+    - developer/SM/ChatBot
+
+# ⚠️  BEFORE RUNNING: You must create a service connection named 'Azure-Service-Connection'
+# See instructions in SERVICE_CONNECTION_SETUP.md
+
+parameters:
+- name: azureServiceConnection
+  displayName: 'Service Connection Name (create this first!)'
+  type: string
+  default: 'Azure-Service-Connection'
+
+- name: targetEnvironment
+  displayName: 'Target Environment'
+  type: string
+  default: 'dev'
+  values:
+  - dev
+  - prod
+
+variables:
+  vmImageName: 'ubuntu-latest'
+  nodeVersion: '18.x'
+  buildPath: 'dist'
+  
+  # Environment-specific settings
+  ${{ if eq(parameters.targetEnvironment, 'dev') }}:
+    appServiceName: 'airport-assistant-chatbot-dev'
+    resourceGroup: 'rg-airport-assistant-dev'
+  ${{ if eq(parameters.targetEnvironment, 'prod') }}:
+    appServiceName: 'airport-assistant-chatbot-prod' 
+    resourceGroup: 'rg-airport-assistant-prod'
+
+stages:
+- stage: Build
+  displayName: 'Build React Application'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build and Package'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - checkout: self
+      displayName: 'Checkout Source Code'
+    
+    - task: NodeTool@0
+      displayName: 'Setup Node.js $(nodeVersion)'
+      inputs:
+        versionSpec: $(nodeVersion)
+    
+    - script: |
+        echo "📦 Installing dependencies..."
+        npm ci
+      displayName: 'Install Dependencies'
+    
+    - script: |
+        echo "🏗️ Building React application..."
+        npm run build
+      displayName: 'Build Application'
+    
+    - task: ArchiveFiles@2
+      displayName: 'Create Deployment Package'
+      inputs:
+        rootFolderOrFile: '$(buildPath)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/app-$(Build.BuildId).zip'
+        replaceExistingArchive: true
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/app-$(Build.BuildId).zip'
+        artifactName: 'WebApp'
+
+- stage: Deploy
+  displayName: 'Deploy to ${{ parameters.targetEnvironment }}'
+  dependsOn: Build
+  condition: succeeded()
+  
+  jobs:
+  - job: DeployJob
+    displayName: 'Deploy to Azure'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifact'
+      inputs:
+        artifactName: 'WebApp'
+        downloadPath: '$(Pipeline.Workspace)'
+    
+    # Test the service connection first
+    - task: AzureCLI@2
+      displayName: 'Test Service Connection'
+      inputs:
+        azureSubscription: '${{ parameters.azureServiceConnection }}'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🔍 Testing Azure service connection..."
+          echo "Current account:"
+          az account show --output table
+          echo "✅ Service connection is working!"
+    
+    - task: AzureWebApp@1
+      displayName: 'Deploy to App Service'
+      inputs:
+        azureSubscription: '${{ parameters.azureServiceConnection }}'
+        appType: 'webApp'
+        appName: '$(appServiceName)'
+        package: '$(Pipeline.Workspace)/app-$(Build.BuildId).zip'
+        deploymentMethod: 'auto'
+    
+    - task: AzureCLI@2
+      displayName: 'Get Application URL'
+      inputs:
+        azureSubscription: '${{ parameters.azureServiceConnection }}'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🌐 Getting application URL..."
+          app_url=$(az webapp show --resource-group "$(resourceGroup)" --name "$(appServiceName)" --query "defaultHostName" --output tsv)
+          
+          if [ ! -z "$app_url" ]; then
+            echo "✅ Deployment successful!"
+            echo "🚀 Application URL: https://$app_url"
+            echo "📱 App Service: $(appServiceName)"
+            echo "📦 Resource Group: $(resourceGroup)"
+            echo "🌍 Environment: ${{ parameters.targetEnvironment }}"
+          else
+            echo "❌ Could not retrieve application URL"
+          fi

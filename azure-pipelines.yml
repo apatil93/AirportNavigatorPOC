@@ -1,0 +1,179 @@
+# Azure DevOps Pipeline for Airport Assistant ChatBot
+# Builds and deploys React app to Azure App Service
+
+trigger:
+  branches:
+    include:
+    - main
+    - developer/SM/ChatBot
+  paths:
+    include:
+    - src/*
+    - public/*
+    - package.json
+    - vite.config.js
+
+parameters:
+- name: azureServiceConnection
+  displayName: 'Azure Service Connection'
+  type: string
+  default: 'Azure-Service-Connection'
+
+variables:
+  # Build Variables
+  buildConfiguration: 'production'
+  vmImageName: 'ubuntu-latest'
+  nodeVersion: '18.x'
+  
+  # Azure Variables
+  azureSubscription: ${{ parameters.azureServiceConnection }}
+  webAppName: 'airport-assistant-chatbot' # Update with your App Service name
+  resourceGroupName: 'rg-airport-assistant' # Update with your resource group name
+  
+  # Application Variables
+  appName: 'Airport Assistant ChatBot'
+  buildPath: 'dist'
+
+stages:
+- stage: Build
+  displayName: 'Build Application'
+  jobs:
+  - job: Build
+    displayName: 'Build React App'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: NodeTool@0
+      displayName: 'Install Node.js $(nodeVersion)'
+      inputs:
+        versionSpec: $(nodeVersion)
+    
+    - task: Cache@2
+      displayName: 'Cache npm dependencies'
+      inputs:
+        key: 'npm | "$(Agent.OS)" | package-lock.json'
+        restoreKeys: |
+          npm | "$(Agent.OS)"
+        path: ~/.npm
+    
+    - script: |
+        echo "Installing dependencies..."
+        npm ci
+      displayName: 'Install Dependencies'
+    
+    - script: |
+        echo "Running tests..."
+        npm run test -- --coverage --watchAll=false
+      displayName: 'Run Tests'
+      continueOnError: true
+    
+    - script: |
+        echo "Building application for production..."
+        npm run build
+      displayName: 'Build Application'
+    
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(Agent.TempDirectory)/jest-junit.xml'
+        failTaskOnFailedTests: false
+    
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish Code Coverage'
+      condition: succeededOrFailed()
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+    
+    - task: ArchiveFiles@2
+      displayName: 'Archive Build Output'
+      inputs:
+        rootFolderOrFile: '$(buildPath)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        artifactName: 'airport-assistant-build'
+        publishLocation: 'pipeline'
+
+- stage: Deploy_Dev
+  displayName: 'Deploy to Development'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/developer/SM/ChatBot'))
+  variables:
+    environmentName: 'dev'
+    webAppName: 'airport-assistant-chatbot-dev'
+  
+  jobs:
+  - job: DeployToDev
+    displayName: 'Deploy to Development Environment'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: 'airport-assistant-build'
+        downloadPath: '$(Pipeline.Workspace)'
+    
+    - task: ExtractFiles@1
+      displayName: 'Extract Build Files'
+      inputs:
+        archiveFilePatterns: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+        destinationFolder: '$(Pipeline.Workspace)/app'
+        cleanDestinationFolder: true
+    
+    - task: AzureWebApp@1
+      displayName: 'Deploy to Azure App Service (Dev)'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        appType: 'webApp'
+        appName: $(webAppName)
+        package: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+        deploymentMethod: 'auto'
+
+- stage: Deploy_Prod
+  displayName: 'Deploy to Production'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  variables:
+    environmentName: 'prod'
+    webAppName: 'airport-assistant-chatbot-prod'
+  
+  jobs:
+  - job: DeployToProd
+    displayName: 'Deploy to Production Environment'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Build Artifacts'
+      inputs:
+        artifactName: 'airport-assistant-build'
+        downloadPath: '$(Pipeline.Workspace)'
+    
+    - task: ExtractFiles@1
+      displayName: 'Extract Build Files'
+      inputs:
+        archiveFilePatterns: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+        destinationFolder: '$(Pipeline.Workspace)/app'
+        cleanDestinationFolder: true
+    
+    - task: AzureWebApp@1
+      displayName: 'Deploy to Azure App Service (Prod)'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        appType: 'webApp'
+        appName: $(webAppName)
+        package: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+        deploymentMethod: 'auto'

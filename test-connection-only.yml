@@ -1,0 +1,30 @@
+# Minimal Test Pipeline - Use this to test your service connection
+# This pipeline only tests if your Azure connection works
+
+trigger: none
+
+parameters:
+- name: serviceConnectionName
+  displayName: 'What is your service connection called?'
+  type: string
+  default: 'Azure-Service-Connection'
+
+jobs:
+- job: TestConnection
+  displayName: 'Test Azure Service Connection'
+  pool:
+    vmImage: 'ubuntu-latest'
+  
+  steps:
+  - task: AzureCLI@2
+    displayName: 'Test Connection'
+    inputs:
+      azureSubscription: '${{ parameters.serviceConnectionName }}'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        echo "🎉 SUCCESS! Your service connection works!"
+        echo "Connected to subscription:"
+        az account show --query "{Name:name, ID:id}" --output table
+        echo "Available resource groups:"
+        az group list --query "[].{Name:name, Location:location}" --output table

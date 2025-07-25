@@ -1,0 +1,217 @@
+# Azure DevOps Pipeline with Environment Support for Airport Assistant ChatBot
+# This version uses Azure DevOps Environments for deployment approvals and tracking
+
+trigger:
+  branches:
+    include:
+    - main
+    - developer/SM/ChatBot
+  paths:
+    include:
+    - src/*
+    - public/*
+    - package.json
+    - vite.config.js
+
+variables:
+  # Build Variables
+  buildConfiguration: 'production'
+  vmImageName: 'ubuntu-latest'
+  nodeVersion: '18.x'
+  
+  # Azure Variables (Update these with your actual values)
+  azureSubscription: 'Azure-Service-Connection' # Update with your service connection name
+  webAppName: 'airport-assistant-chatbot' # Update with your App Service name
+  resourceGroupName: 'rg-airport-assistant' # Update with your resource group name
+  
+  # Application Variables
+  appName: 'Airport Assistant ChatBot'
+  buildPath: 'dist'
+
+stages:
+- stage: Build
+  displayName: 'Build Application'
+  jobs:
+  - job: Build
+    displayName: 'Build React App'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: NodeTool@0
+      displayName: 'Install Node.js $(nodeVersion)'
+      inputs:
+        versionSpec: $(nodeVersion)
+    
+    - task: Cache@2
+      displayName: 'Cache npm dependencies'
+      inputs:
+        key: 'npm | "$(Agent.OS)" | package-lock.json'
+        restoreKeys: |
+          npm | "$(Agent.OS)"
+        path: ~/.npm
+    
+    - script: |
+        echo "Installing dependencies..."
+        npm ci --prefer-offline --no-audit
+      displayName: 'Install Dependencies'
+    
+    - script: |
+        echo "Building application for production..."
+        npm run build
+      displayName: 'Build Application'
+    
+    - task: ArchiveFiles@2
+      displayName: 'Archive Build Output'
+      inputs:
+        rootFolderOrFile: '$(buildPath)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+    
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        artifactName: 'airport-assistant-build'
+        publishLocation: 'pipeline'
+
+- stage: Deploy_Dev
+  displayName: 'Deploy to Development'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/developer/SM/ChatBot'))
+  variables:
+    environmentName: 'dev'
+    webAppName: 'airport-assistant-chatbot-dev'
+  
+  jobs:
+  - deployment: DeployToDev
+    displayName: 'Deploy to Development Environment'
+    pool:
+      vmImage: $(vmImageName)
+    # Note: The environment will be created automatically if it doesn't exist
+    environment: 'Development'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: 'airport-assistant-build'
+              downloadPath: '$(Pipeline.Workspace)'
+          
+          - task: ExtractFiles@1
+            displayName: 'Extract Build Files'
+            inputs:
+              archiveFilePatterns: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+              destinationFolder: '$(Pipeline.Workspace)/app'
+              cleanDestinationFolder: true
+          
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Azure App Service (Dev)'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: 'webApp'
+              appName: $(webAppName)
+              package: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+              deploymentMethod: 'auto'
+          
+          - task: AzureCLI@2
+            displayName: 'Verify Deployment'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Verifying deployment to $(webAppName)..."
+                
+                # Get the app URL
+                app_url=$(az webapp show --resource-group $(resourceGroupName) --name $(webAppName) --query defaultHostName --output tsv)
+                echo "App URL: https://$app_url"
+                
+                # Wait for app to be ready
+                echo "Waiting for application to start..."
+                sleep 30
+                
+                # Check if the app responds
+                response_code=$(curl -s -o /dev/null -w "%{http_code}" "https://$app_url" || echo "000")
+                echo "Response code: $response_code"
+                
+                if [ "$response_code" = "200" ]; then
+                  echo "✅ Application is responding successfully!"
+                else
+                  echo "⚠️ Application returned status code: $response_code"
+                  echo "Please check the application logs in Azure Portal"
+                fi
+
+- stage: Deploy_Prod
+  displayName: 'Deploy to Production'
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  variables:
+    environmentName: 'prod'
+    webAppName: 'airport-assistant-chatbot-prod'
+  
+  jobs:
+  - deployment: DeployToProd
+    displayName: 'Deploy to Production Environment'
+    pool:
+      vmImage: $(vmImageName)
+    # Note: The environment will be created automatically if it doesn't exist
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            displayName: 'Download Build Artifacts'
+            inputs:
+              artifactName: 'airport-assistant-build'
+              downloadPath: '$(Pipeline.Workspace)'
+          
+          - task: ExtractFiles@1
+            displayName: 'Extract Build Files'
+            inputs:
+              archiveFilePatterns: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+              destinationFolder: '$(Pipeline.Workspace)/app'
+              cleanDestinationFolder: true
+          
+          - task: AzureWebApp@1
+            displayName: 'Deploy to Azure App Service (Prod)'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: 'webApp'
+              appName: $(webAppName)
+              package: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
+              deploymentMethod: 'auto'
+          
+          - task: AzureCLI@2
+            displayName: 'Verify Deployment'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Verifying deployment to $(webAppName)..."
+                
+                # Get the app URL
+                app_url=$(az webapp show --resource-group $(resourceGroupName) --name $(webAppName) --query defaultHostName --output tsv)
+                echo "App URL: https://$app_url"
+                
+                # Wait for app to be ready
+                echo "Waiting for application to start..."
+                sleep 30
+                
+                # Check if the app responds
+                response_code=$(curl -s -o /dev/null -w "%{http_code}" "https://$app_url" || echo "000")
+                echo "Response code: $response_code"
+                
+                if [ "$response_code" = "200" ]; then
+                  echo "✅ Application is responding successfully!"
+                  echo "🎉 Production deployment completed!"
+                else
+                  echo "⚠️ Application returned status code: $response_code"
+                  echo "Please check the application logs in Azure Portal"
+                fi

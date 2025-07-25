@@ -1,0 +1,338 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "description": "ARM template for Airport Assistant ChatBot - Complete infrastructure deployment"
+  },
+  "parameters": {
+    "appName": {
+      "type": "string",
+      "defaultValue": "airport-assistant-chatbot",
+      "metadata": {
+        "description": "Name of the web app"
+      }
+    },
+    "environment": {
+      "type": "string",
+      "defaultValue": "dev",
+      "allowedValues": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "metadata": {
+        "description": "Environment name"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources"
+      }
+    },
+    "sku": {
+      "type": "string",
+      "defaultValue": "F1",
+      "allowedValues": [
+        "F1",
+        "B1",
+        "B2",
+        "S1",
+        "S2",
+        "P1v2",
+        "P2v2"
+      ],
+      "metadata": {
+        "description": "App Service Plan SKU"
+      }
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "maxValue": 10,
+      "metadata": {
+        "description": "Number of instances"
+      }
+    },
+    "enableApplicationInsights": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Enable Application Insights for monitoring"
+      }
+    }
+  },
+  "variables": {
+    "webAppName": "[concat(parameters('appName'), '-', parameters('environment'))]",
+    "appServicePlanName": "[concat('asp-', parameters('appName'), '-', parameters('environment'))]",
+    "applicationInsightsName": "[concat('ai-', parameters('appName'), '-', parameters('environment'))]",
+    "logAnalyticsWorkspaceName": "[concat('law-', parameters('appName'), '-', parameters('environment'))]",
+    "storageAccountName": "[concat('st', replace(parameters('appName'), '-', ''), parameters('environment'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-09-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "Application": "Airport Assistant ChatBot",
+        "Environment": "[parameters('environment')]"
+      },
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2022-10-01",
+      "name": "[variables('logAnalyticsWorkspaceName')]",
+      "location": "[parameters('location')]",
+      "condition": "[parameters('enableApplicationInsights')]",
+      "tags": {
+        "Application": "Airport Assistant ChatBot",
+        "Environment": "[parameters('environment')]"
+      },
+      "properties": {
+        "sku": {
+          "name": "PerGB2018"
+        },
+        "retentionInDays": 30,
+        "features": {
+          "searchVersion": 1,
+          "legacy": 0,
+          "enableLogAccessUsingOnlyResourcePermissions": true
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2020-02-02",
+      "name": "[variables('applicationInsightsName')]",
+      "location": "[parameters('location')]",
+      "condition": "[parameters('enableApplicationInsights')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsWorkspaceName'))]"
+      ],
+      "tags": {
+        "Application": "Airport Assistant ChatBot",
+        "Environment": "[parameters('environment')]"
+      },
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web",
+        "WorkspaceResourceId": "[if(parameters('enableApplicationInsights'), resourceId('Microsoft.OperationalInsights/workspaces', variables('logAnalyticsWorkspaceName')), null())]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-09-01",
+      "name": "[variables('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "Application": "Airport Assistant ChatBot",
+        "Environment": "[parameters('environment')]"
+      },
+      "sku": {
+        "name": "[parameters('sku')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "kind": "linux",
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-09-01",
+      "name": "[variables('webAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "[if(parameters('enableApplicationInsights'), resourceId('Microsoft.Insights/components', variables('applicationInsightsName')), resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName')))]"
+      ],
+      "tags": {
+        "Application": "Airport Assistant ChatBot",
+        "Environment": "[parameters('environment')]"
+      },
+      "kind": "app,linux",
+      "properties": {
+        "enabled": true,
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "reserved": true,
+        "isXenon": false,
+        "hyperV": false,
+        "vnetRouteAllEnabled": false,
+        "vnetImagePullEnabled": false,
+        "vnetContentShareEnabled": false,
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "linuxFxVersion": "NODE|18-lts",
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": "[if(equals(parameters('sku'), 'F1'), false(), true())]",
+          "http20Enabled": true,
+          "functionAppScaleLimit": 0,
+          "minimumElasticInstanceCount": 0,
+          "appSettings": [
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "18.x"
+            },
+            {
+              "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+              "value": "false"
+            },
+            {
+              "name": "ENABLE_ORYX_BUILD",
+              "value": "true"
+            },
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[if(parameters('enableApplicationInsights'), reference(resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))).InstrumentationKey, '')]"
+            },
+            {
+              "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+              "value": "[if(parameters('enableApplicationInsights'), reference(resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))).ConnectionString, '')]"
+            },
+            {
+              "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+              "value": "~2"
+            }
+          ]
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": false,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "hostNamesDisabled": false,
+        "customDomainVerificationId": "[guid(resourceGroup().id)]",
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": true,
+        "redundancyMode": "None",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(variables('webAppName'), '/web')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('webAppName'))]"
+      ],
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "index.html",
+          "index.htm",
+          "Default.htm",
+          "hostingstart.html"
+        ],
+        "netFrameworkVersion": "v4.0",
+        "linuxFxVersion": "NODE|18-lts",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "httpLoggingEnabled": true,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "[concat('$', variables('webAppName'))]",
+        "scmType": "None",
+        "use32BitWorkerProcess": false,
+        "webSocketsEnabled": false,
+        "alwaysOn": "[if(equals(parameters('sku'), 'F1'), false(), true())]",
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "localMySqlEnabled": false,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": true,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.2",
+        "ftpsState": "FtpsOnly",
+        "preWarmedInstanceCount": 0,
+        "functionAppScaleLimit": 0,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 0,
+        "azureStorageAccounts": {}
+      }
+    }
+  ],
+  "outputs": {
+    "webAppName": {
+      "type": "string",
+      "value": "[variables('webAppName')]"
+    },
+    "webAppUrl": {
+      "type": "string",
+      "value": "[concat('https://', reference(resourceId('Microsoft.Web/sites', variables('webAppName'))).defaultHostName)]"
+    },
+    "appServicePlanName": {
+      "type": "string",
+      "value": "[variables('appServicePlanName')]"
+    },
+    "applicationInsightsName": {
+      "type": "string",
+      "value": "[if(parameters('enableApplicationInsights'), variables('applicationInsightsName'), '')]"
+    },
+    "applicationInsightsInstrumentationKey": {
+      "type": "string",
+      "value": "[if(parameters('enableApplicationInsights'), reference(resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))).InstrumentationKey, '')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[variables('storageAccountName')]"
+    }
+  }
+}

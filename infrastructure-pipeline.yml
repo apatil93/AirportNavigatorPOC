@@ -1,0 +1,193 @@
+# Infrastructure Deployment Pipeline for Airport Assistant ChatBot
+# Deploys ARM templates to provision Azure resources
+
+trigger: none # Manual trigger only for infrastructure changes
+
+pr: none # No PR triggers for infrastructure
+
+parameters:
+- name: environment
+  displayName: 'Target Environment'
+  type: string
+  default: 'dev'
+  values:
+  - dev
+  - prod
+
+- name: deployInfrastructure
+  displayName: 'Deploy Infrastructure'
+  type: boolean
+  default: true
+
+- name: forceDeployment
+  displayName: 'Force Deployment (override protection)'
+  type: boolean
+  default: false
+
+variables:
+  # Azure Variables
+  azureSubscription: 'Azure-Service-Connection' # Update with your service connection name
+  resourceGroupName: 'rg-airport-assistant-${{ parameters.environment }}'
+  location: 'East US' # Change to your preferred region
+  
+  # Template Variables
+  templateFile: 'infrastructure/azuredeploy.json'
+  parametersFile: 'infrastructure/azuredeploy.parameters.${{ parameters.environment }}.json'
+  
+  # Build Variables
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: ValidateInfrastructure
+  displayName: 'Validate ARM Template'
+  jobs:
+  - job: ValidateTemplate
+    displayName: 'Validate ARM Template'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Validate ARM Template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: $(azureSubscription)
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: $(resourceGroupName)
+        location: $(location)
+        templateLocation: 'Linked artifact'
+        csmFile: $(templateFile)
+        csmParametersFile: $(parametersFile)
+        deploymentMode: 'Validation'
+    
+    - task: AzurePowerShell@5
+      displayName: 'What-If Analysis'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        ScriptType: 'InlineScript'
+        Inline: |
+          $templateFile = "$(System.DefaultWorkingDirectory)/$(templateFile)"
+          $parametersFile = "$(System.DefaultWorkingDirectory)/$(parametersFile)"
+          
+          Write-Host "Running What-If analysis for Resource Group: $(resourceGroupName)"
+          
+          $whatIfResults = Get-AzResourceGroupDeploymentWhatIfResult `
+            -ResourceGroupName "$(resourceGroupName)" `
+            -TemplateFile $templateFile `
+            -TemplateParameterFile $parametersFile
+          
+          Write-Host "What-If Results:"
+          Write-Host $whatIfResults
+        azurePowerShellVersion: 'LatestVersion'
+
+- stage: DeployInfrastructure
+  displayName: 'Deploy Infrastructure'
+  dependsOn: ValidateInfrastructure
+  condition: and(succeeded(), eq('${{ parameters.deployInfrastructure }}', true))
+  jobs:
+  - deployment: DeployInfrastructure
+    displayName: 'Deploy Azure Resources'
+    pool:
+      vmImage: $(vmImageName)
+    environment: 'Infrastructure-${{ parameters.environment }}'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureResourceManagerTemplateDeployment@3
+            displayName: 'Deploy ARM Template'
+            inputs:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: $(azureSubscription)
+              action: 'Create Or Update Resource Group'
+              resourceGroupName: $(resourceGroupName)
+              location: $(location)
+              templateLocation: 'Linked artifact'
+              csmFile: $(templateFile)
+              csmParametersFile: $(parametersFile)
+              deploymentMode: 'Incremental'
+              deploymentName: 'airport-assistant-infrastructure-$(Build.BuildId)'
+              outputVariable: 'ArmOutputs'
+          
+          - task: AzurePowerShell@5
+            displayName: 'Display Deployment Outputs'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              ScriptType: 'InlineScript'
+              Inline: |
+                Write-Host "Deployment completed successfully!"
+                Write-Host "Deployment Outputs:"
+                Write-Host "$(ArmOutputs)"
+                
+                # Parse ARM outputs
+                $outputs = '$(ArmOutputs)' | ConvertFrom-Json
+                
+                Write-Host "Web App Name: $($outputs.webAppName.value)"
+                Write-Host "Web App URL: $($outputs.webAppUrl.value)"
+                Write-Host "App Service Plan: $($outputs.appServicePlanName.value)"
+                Write-Host "Application Insights: $($outputs.applicationInsightsName.value)"
+                Write-Host "Storage Account: $($outputs.storageAccountName.value)"
+                
+                # Set pipeline variables for subsequent stages
+                Write-Host "##vso[task.setvariable variable=webAppName;isOutput=true]$($outputs.webAppName.value)"
+                Write-Host "##vso[task.setvariable variable=webAppUrl;isOutput=true]$($outputs.webAppUrl.value)"
+              azurePowerShellVersion: 'LatestVersion'
+              name: 'SetOutputVariables'
+
+- stage: PostDeploymentValidation
+  displayName: 'Post-Deployment Validation'
+  dependsOn: DeployInfrastructure
+  condition: succeeded()
+  variables:
+    webAppName: $[ stageDependencies.DeployInfrastructure.DeployInfrastructure.outputs['SetOutputVariables.webAppName'] ]
+    webAppUrl: $[ stageDependencies.DeployInfrastructure.DeployInfrastructure.outputs['SetOutputVariables.webAppUrl'] ]
+  
+  jobs:
+  - job: ValidateDeployment
+    displayName: 'Validate Deployed Resources'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: AzurePowerShell@5
+      displayName: 'Validate Azure Resources'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        ScriptType: 'InlineScript'
+        Inline: |
+          Write-Host "Validating deployed resources..."
+          
+          # Check if resource group exists
+          $rg = Get-AzResourceGroup -Name "$(resourceGroupName)" -ErrorAction SilentlyContinue
+          if ($rg) {
+            Write-Host "✅ Resource Group '$(resourceGroupName)' exists"
+          } else {
+            Write-Error "❌ Resource Group '$(resourceGroupName)' not found"
+            exit 1
+          }
+          
+          # Check if App Service exists
+          $webApp = Get-AzWebApp -ResourceGroupName "$(resourceGroupName)" -Name "$(webAppName)" -ErrorAction SilentlyContinue
+          if ($webApp) {
+            Write-Host "✅ Web App '$(webAppName)' exists"
+            Write-Host "   State: $($webApp.State)"
+            Write-Host "   Default Hostname: $($webApp.DefaultHostName)"
+          } else {
+            Write-Error "❌ Web App '$(webAppName)' not found"
+            exit 1
+          }
+          
+          # Check if App Service Plan exists
+          $asp = Get-AzAppServicePlan -ResourceGroupName "$(resourceGroupName)" -ErrorAction SilentlyContinue
+          if ($asp) {
+            Write-Host "✅ App Service Plan exists"
+            Write-Host "   SKU: $($asp.Sku.Name)"
+            Write-Host "   Capacity: $($asp.Sku.Capacity)"
+          } else {
+            Write-Error "❌ App Service Plan not found"
+            exit 1
+          }
+          
+          Write-Host "🎉 All resources validated successfully!"
+          Write-Host "🌐 Application URL: $(webAppUrl)"
+        azurePowerShellVersion: 'LatestVersion'

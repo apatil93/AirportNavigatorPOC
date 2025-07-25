@@ -1,0 +1,1432 @@
+[
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Popeyes Louisiana Kitchen",
+    "Category": "Fast Food",
+    "Terminal": "South Terminal",
+    "Location/Description": "Concourse A, Gate A15",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(404) 123-4567"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Chik-fil-A",
+    "Category": "Fast Food",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B20",
+    "Hours of Operation": "5:30 AM - 9:30 PM",
+    "Contact Information": "(404) 234-5678"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "One Flew South",
+    "Category": "Fine Dining",
+    "Terminal": "International Terminal (Concourse E)",
+    "Location/Description": "Near Gate E33",
+    "Hours of Operation": "11:00 AM - 9:00 PM",
+    "Contact Information": "(404) 345-6789"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations, e.g., Concourse T, Gate T8",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(404) 456-7890"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Duty Free Americas",
+    "Category": "Duty-Free",
+    "Terminal": "International Terminal (Concourse F)",
+    "Location/Description": "Main Hall",
+    "Hours of Operation": "6:00 AM - 11:00 PM",
+    "Contact Information": "(404) 567-8901"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Books & More",
+    "Category": "Books & News",
+    "Terminal": "Concourse D",
+    "Location/Description": "Near Gate D25",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(404) 678-9012"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Traveler's Express",
+    "Category": "Travel Essentials",
+    "Terminal": "Concourse C",
+    "Location/Description": "Near Gate C12",
+    "Hours of Operation": "4:00 AM - 11:00 PM",
+    "Contact Information": "(404) 789-0123"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "XpresSpa",
+    "Category": "Spas/Wellness",
+    "Terminal": "Concourse A",
+    "Location/Description": "Near Gate A18",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(404) 890-1234"
+  },
+  {
+    "record": "",
+    "Airport Name": "Hartsfield-Jackson Atlanta International Airport (ATL)",
+    "Shop Name": "Delta Sky Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Concourse T, A, B, C, D, E, F",
+    "Hours of Operation": "5:00 AM - Last Departure",
+    "Contact Information": "(800) 221-1212"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Shake Shack",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal C",
+    "Location/Description": "Near Gate C6",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(972) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Texas Marketplace",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal A",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "5:00 AM - 9:00 PM",
+    "Contact Information": "(972) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "InMotion Entertainment",
+    "Category": "Electronics",
+    "Terminal": "Terminal D",
+    "Location/Description": "Near Gate D15",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(972) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Centurion Lounge",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal D",
+    "Location/Description": "Near Gate D12",
+    "Hours of Operation": "5:30 AM - 10:00 PM",
+    "Contact Information": "(800) 525-3355"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Minute Suites",
+    "Category": "Spas/Wellness",
+    "Terminal": "Terminal D",
+    "Location/Description": "Near Gate D23",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(972) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Terminal E",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(972) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Pappadeaux Seafood Kitchen",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal A",
+    "Location/Description": "Near Gate A24",
+    "Hours of Operation": "10:00 AM - 9:00 PM",
+    "Contact Information": "(972) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "DFS Galleria",
+    "Category": "Duty-Free",
+    "Terminal": "Terminal D",
+    "Location/Description": "Near Gate D22",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(972) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "Dallas/Fort Worth International Airport (DFW)",
+    "Shop Name": "Car Rental Center",
+    "Category": "Car Rental (Desk)",
+    "Terminal": "Integrated Facility",
+    "Location/Description": "External bus shuttle from terminals",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(800) 123-4567"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "New Belgium Brewing Co.",
+    "Category": "Bar/Pub",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B30",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(303) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "Tattered Cover Bookstore",
+    "Category": "Books & News",
+    "Terminal": "Concourse A",
+    "Location/Description": "Center Atrium",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(303) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "Rocky Mountain Chocolate Factory",
+    "Category": "Snacks/Concessions",
+    "Terminal": "Jeppesen Terminal",
+    "Location/Description": "Level 6, Pre-Security",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(303) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "United Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B44",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 864-8331"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "Brighton Collectibles",
+    "Category": "Fashion/Apparel",
+    "Terminal": "Concourse C",
+    "Location/Description": "Near Gate C28",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(303) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Denver International Airport (DEN)",
+    "Shop Name": "Currency Exchange International",
+    "Category": "Currency Exchange",
+    "Terminal": "Jeppesen Terminal",
+    "Location/Description": "Level 5, Pre-Security",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(303) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "Tortas Frontera by Rick Bayless",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 1",
+    "Location/Description": "Concourse B, Gate B10",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(773) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "Hudson News",
+    "Category": "Books & News",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(773) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "Brookstone",
+    "Category": "Electronics",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Concourse H, Gate H1",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(773) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "American Airlines Admirals Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Concourse G, Gate G8",
+    "Hours of Operation": "4:00 AM - 10:00 PM",
+    "Contact Information": "(800) 433-7300"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "Urban Crave",
+    "Category": "Fast Food",
+    "Terminal": "Terminal 5",
+    "Location/Description": "Near Gate M13",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(773) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "MAC Cosmetics",
+    "Category": "Health & Beauty",
+    "Terminal": "Terminal 1",
+    "Location/Description": "Concourse C, Near Gate C18",
+    "Hours of Operation": "8:00 AM - 8:00 PM",
+    "Contact Information": "(773) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Chicago O'Hare International Airport (ORD)",
+    "Shop Name": "ATMs",
+    "Category": "ATMs",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Throughout all terminals",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Urth Caffé",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Terminal 1",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "5:00 AM - 9:00 PM",
+    "Contact Information": "(310) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Tom Bradley International Terminal Duty Free",
+    "Category": "Duty-Free",
+    "Terminal": "Tom Bradley International Terminal (TBIT)",
+    "Location/Description": "Main Hall",
+    "Hours of Operation": "6:00 AM - 12:00 AM",
+    "Contact Information": "(310) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Kiehl's",
+    "Category": "Health & Beauty",
+    "Terminal": "Terminal 5",
+    "Location/Description": "Near Gate 53",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(310) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "The Private Suite LAX",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Private Terminal",
+    "Location/Description": "Near Cargo Way",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(310) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Farmers Market to Go",
+    "Category": "Snacks/Concessions",
+    "Terminal": "Terminal 6",
+    "Location/Description": "Near Gate 67",
+    "Hours of Operation": "5:00 AM - 8:00 PM",
+    "Contact Information": "(310) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(310) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "P.F. Chang's",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate 48",
+    "Hours of Operation": "10:00 AM - 10:00 PM",
+    "Contact Information": "(310) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "Los Angeles International Airport (LAX)",
+    "Shop Name": "Pet Relief Area",
+    "Category": "Pet Relief Area",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Post-security outdoor areas",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "Bad Daddy's Burger Bar",
+    "Category": "Casual Dining",
+    "Terminal": "Concourse A",
+    "Location/Description": "Near Gate A10",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(704) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "Queen City News",
+    "Category": "Books & News",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B12",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(704) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "The Atrium",
+    "Category": "Specialty Retail",
+    "Terminal": "Main Atrium",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "7:00 AM - 8:00 PM",
+    "Contact Information": "(704) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "USO Lounge",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Atrium",
+    "Location/Description": "Across from Gate B3",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(704) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "Whisky River",
+    "Category": "Bar/Pub",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B5",
+    "Hours of Operation": "8:00 AM - 10:00 PM",
+    "Contact Information": "(704) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "Brooks Brothers",
+    "Category": "Fashion/Apparel",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Concourse A/B connector",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(704) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Charlotte Douglas International Airport (CLT)",
+    "Shop Name": "Pharmacy",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Ticketing Level",
+    "Hours of Operation": "8:00 AM - 6:00 PM",
+    "Contact Information": "(704) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Cask & Larder",
+    "Category": "Casual Dining",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Near Gate 100",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(407) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Kennedy Space Center Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal B",
+    "Location/Description": "Airside 3",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(407) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Universal Orlando Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal A",
+    "Location/Description": "Airside 1",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(407) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "The Club MCO",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal A (Airside 1), Terminal B (Airside 4)",
+    "Location/Description": "Near Gate 91 & 71",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(407) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(407) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Disney's EarPort",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Level 3",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(407) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Orlando International Airport (MCO)",
+    "Shop Name": "Walgreens",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Terminal A",
+    "Location/Description": "Landside, Level 1",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(407) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "P.F. Chang's",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 1",
+    "Location/Description": "Gate D37",
+    "Hours of Operation": "10:00 AM - 10:00 PM",
+    "Contact Information": "(702) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "Welcome to Las Vegas Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal 1",
+    "Location/Description": "C Gates",
+    "Hours of Operation": "6:00 AM - 11:00 PM",
+    "Contact Information": "(702) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "Duty Free",
+    "Category": "Duty-Free",
+    "Terminal": "Terminal 3",
+    "Location/Description": "E Gates",
+    "Hours of Operation": "7:00 AM - 11:00 PM",
+    "Contact Information": "(702) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "The Club LAS",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 1 (Concourse D), Terminal 3 (Concourse E)",
+    "Location/Description": "Near Gate D19, Gate E2",
+    "Hours of Operation": "5:00 AM - 11:00 PM",
+    "Contact Information": "(702) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "Hudson News",
+    "Category": "Books & News",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(702) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "Gambling Machines",
+    "Category": "Services",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Throughout all concourses",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Harry Reid International Airport (LAS)",
+    "Shop Name": "Luggage Services",
+    "Category": "Luggage Services",
+    "Terminal": "Terminal 1",
+    "Location/Description": "Baggage Claim",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(702) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Matt's Big Breakfast",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Gate B5",
+    "Hours of Operation": "6:00 AM - 2:00 PM",
+    "Contact Information": "(602) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Native American Arts & Crafts",
+    "Category": "Specialty Retail",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate C3",
+    "Hours of Operation": "7:00 AM - 8:00 PM",
+    "Contact Information": "(602) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Tech on the Go",
+    "Category": "Electronics",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Near Gate D6",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(602) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Centurion Lounge",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Concourse A, near Gate A7",
+    "Hours of Operation": "5:00 AM - 9:00 PM",
+    "Contact Information": "(800) 525-3355"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(602) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Phoenix Sky Harbor International Airport (PHX)",
+    "Shop Name": "Sky Harbor Pharmacy",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate B1",
+    "Hours of Operation": "7:00 AM - 7:00 PM",
+    "Contact Information": "(602) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "Versailles Restaurant (Cuban Cuisine)",
+    "Category": "Casual Dining",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Concourse E, Level 2",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(305) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "Britto Miami",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "South Terminal",
+    "Location/Description": "Concourse J, Near Gate J17",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(305) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "Duty Free Americas",
+    "Category": "Duty-Free",
+    "Terminal": "North Terminal",
+    "Location/Description": "Concourse D, Near Gate D30",
+    "Hours of Operation": "6:00 AM - 11:00 PM",
+    "Contact Information": "(305) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "Flagship Lounge (American Airlines)",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Concourse D, Level 3",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 433-7300"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "JetBlue Terminal Service Desk",
+    "Category": "Customer Service",
+    "Terminal": "North Terminal",
+    "Location/Description": "Concourse D",
+    "Hours of Operation": "4:00 AM - Last Departure",
+    "Contact Information": "(800) 538-2583"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "ATMs",
+    "Category": "ATMs",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Throughout all terminals",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Miami International Airport (MIA)",
+    "Shop Name": "Walgreens",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Concourse E",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(305) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Pike Place Market Food Hall",
+    "Category": "Casual Dining",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "5:00 AM - 9:00 PM",
+    "Contact Information": "(206) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Seattle Made Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Concourse C",
+    "Location/Description": "Near Gate C12",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(206) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Elliott Bay Book Company",
+    "Category": "Books & News",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Near Gate S8",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(206) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "The Club SEA",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "South Satellite, Concourse A",
+    "Location/Description": "Near Gate A12",
+    "Hours of Operation": "5:00 AM - 12:00 AM",
+    "Contact Information": "(206) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Starbucks Reserve",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Central Terminal",
+    "Location/Description": "Near Checkpoint 3",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(206) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Currency Exchange",
+    "Category": "Currency Exchange",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Ticketing Level",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(206) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Seattle-Tacoma International Airport (SEA)",
+    "Shop Name": "Baggage Claim Services",
+    "Category": "Baggage Claim Services",
+    "Terminal": "Baggage Claim",
+    "Location/Description": "Near Carousels",
+    "Hours of Operation": "24/7",
+    "Contact Information": "(206) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "Ghirardelli Ice Cream and Chocolate Shop",
+    "Category": "Snacks/Concessions",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Boarding Area F",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(650) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "Burberry",
+    "Category": "Fashion/Apparel",
+    "Terminal": "International Terminal",
+    "Location/Description": "Boarding Area A",
+    "Hours of Operation": "9:00 AM - 8:00 PM",
+    "Contact Information": "(650) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "SFO Museum Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal 2",
+    "Location/Description": "Near Gate D7",
+    "Hours of Operation": "8:00 AM - 7:00 PM",
+    "Contact Information": "(650) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "United Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Boarding Area F",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 864-8331"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "XpresSpa",
+    "Category": "Spas/Wellness",
+    "Terminal": "Terminal 3",
+    "Location/Description": "Boarding Area E",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(650) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "Kiehl's",
+    "Category": "Health & Beauty",
+    "Terminal": "International Terminal",
+    "Location/Description": "Boarding Area G",
+    "Hours of Operation": "8:00 AM - 9:00 PM",
+    "Contact Information": "(650) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "San Francisco International Airport (SFO)",
+    "Shop Name": "Chapel",
+    "Category": "Chapel/Prayer Room",
+    "Terminal": "International Terminal",
+    "Location/Description": "Arrivals Level",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Shake Shack",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate B37",
+    "Hours of Operation": "6:00 AM - 11:00 PM",
+    "Contact Information": "(718) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Duty Free Americas",
+    "Category": "Duty-Free",
+    "Terminal": "Terminal 1, 4, 7, 8",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "6:00 AM - 12:00 AM",
+    "Contact Information": "(718) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "MAC Cosmetics",
+    "Category": "Health & Beauty",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate B28",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(718) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Centurion Lounge",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Near Gate B27",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 525-3355"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Hudson News",
+    "Category": "Books & News",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(718) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Currency Exchange",
+    "Category": "Currency Exchange",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Arrivals Level",
+    "Hours of Operation": "6:00 AM - 11:00 PM",
+    "Contact Information": "(718) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "John F. Kennedy International Airport (JFK)",
+    "Shop Name": "Pharmacy",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Terminal 4",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(718) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "Daily",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal A",
+    "Location/Description": "Near Gate A18",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(973) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "L'Occitane",
+    "Category": "Health & Beauty",
+    "Terminal": "Terminal C",
+    "Location/Description": "Near Gate C80",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(973) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "Hudson News",
+    "Category": "Books & News",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(973) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "United Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal C",
+    "Location/Description": "Near Gate C74, C120",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 864-8331"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "Duty Free Americas",
+    "Category": "Duty-Free",
+    "Terminal": "Terminal B",
+    "Location/Description": "Near Gate B60",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(973) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "Chapel",
+    "Category": "Chapel/Prayer Room",
+    "Terminal": "Terminal B",
+    "Location/Description": "Pre-security",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Newark Liberty International Airport (EWR)",
+    "Shop Name": "ATMs",
+    "Category": "ATMs",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Throughout all terminals",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "Legal Sea Foods",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal A, B, C, E",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "10:00 AM - 9:00 PM",
+    "Contact Information": "(617) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "Tech on the Go",
+    "Category": "Electronics",
+    "Terminal": "Terminal B",
+    "Location/Description": "Near Gate B30",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(617) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "Duty Free",
+    "Category": "Duty-Free",
+    "Terminal": "Terminal E",
+    "Location/Description": "Near Gate E11",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(617) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "The Club BOS",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal E",
+    "Location/Description": "Near Gate E10",
+    "Hours of Operation": "5:00 AM - 11:00 PM",
+    "Contact Information": "(617) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(617) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "News & Gifts",
+    "Category": "Travel Essentials",
+    "Terminal": "Terminal C",
+    "Location/Description": "Near Gate C20",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(617) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Boston Logan International Airport (BOS)",
+    "Shop Name": "Currency Exchange",
+    "Category": "Currency Exchange",
+    "Terminal": "Terminal E",
+    "Location/Description": "Arrivals Level",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(617) 777-8888"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "Stone Arch Bar & Food",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal 1 (Lindbergh)",
+    "Location/Description": "Concourse G",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(612) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "Lake Itasca News & Gifts",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal 1 (Lindbergh)",
+    "Location/Description": "Concourse C",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(612) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "InMotion Entertainment",
+    "Category": "Electronics",
+    "Terminal": "Terminal 1 (Lindbergh)",
+    "Location/Description": "Concourse D",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(612) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "Delta Sky Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal 1 (Lindbergh)",
+    "Location/Description": "Concourse C, G, F",
+    "Hours of Operation": "5:00 AM - Last Departure",
+    "Contact Information": "(800) 221-1212"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(612) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "XpresSpa",
+    "Category": "Spas/Wellness",
+    "Terminal": "Terminal 1 (Lindbergh)",
+    "Location/Description": "Concourse G",
+    "Hours of Operation": "7:00 AM - 8:00 PM",
+    "Contact Information": "(612) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Minneapolis-Saint Paul International Airport (MSP)",
+    "Shop Name": "Pet Relief Area",
+    "Category": "Pet Relief Area",
+    "Terminal": "Terminal 1 & 2",
+    "Location/Description": "Post-security outdoor areas",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "Andiamo",
+    "Category": "Casual Dining",
+    "Terminal": "McNamara Terminal",
+    "Location/Description": "Near Gate A30",
+    "Hours of Operation": "10:00 AM - 9:00 PM",
+    "Contact Information": "(734) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "Michigan Sports Store",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "McNamara Terminal",
+    "Location/Description": "Near Gate A60",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(734) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "Duty Free",
+    "Category": "Duty-Free",
+    "Terminal": "McNamara Terminal",
+    "Location/Description": "Central Link",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(734) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "Delta Sky Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "McNamara Terminal",
+    "Location/Description": "Concourse A, B, C",
+    "Hours of Operation": "5:00 AM - Last Departure",
+    "Contact Information": "(800) 221-1212"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(734) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "News & Books",
+    "Category": "Books & News",
+    "Terminal": "North Terminal",
+    "Location/Description": "Near Gate D10",
+    "Hours of Operation": "5:00 AM - 9:00 PM",
+    "Contact Information": "(734) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Detroit Metropolitan Wayne County Airport (DTW)",
+    "Shop Name": "ATMs",
+    "Category": "ATMs",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Throughout all terminals",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "Chickie's & Pete's",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal A East",
+    "Location/Description": "Near Gate A15",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(215) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "Pennsylvania Market",
+    "Category": "Souvenirs/Gifts",
+    "Terminal": "Terminal B",
+    "Location/Description": "Near Gate B10",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(215) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "Tech on the Go",
+    "Category": "Electronics",
+    "Terminal": "Terminal C",
+    "Location/Description": "Near Gate C18",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(215) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "American Airlines Admirals Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal A West, B, C",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "4:00 AM - 10:00 PM",
+    "Contact Information": "(800) 433-7300"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(215) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "InMotion Entertainment",
+    "Category": "Electronics",
+    "Terminal": "Terminal D",
+    "Location/Description": "Near Gate D8",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(215) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Philadelphia International Airport (PHL)",
+    "Shop Name": "XpresSpa",
+    "Category": "Spas/Wellness",
+    "Terminal": "Terminal A East",
+    "Location/Description": "Near Gate A17",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(215) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "Shake Shack",
+    "Category": "Casual Dining",
+    "Terminal": "Terminal B",
+    "Location/Description": "Main Hall",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(718) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "MTA On The Go",
+    "Category": "Travel Essentials",
+    "Terminal": "Terminal B",
+    "Location/Description": "Arrivals Level",
+    "Hours of Operation": "5:00 AM - 11:00 PM",
+    "Contact Information": "(718) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "FAO Schwarz",
+    "Category": "Specialty Retail",
+    "Terminal": "Terminal B",
+    "Location/Description": "Main Hall",
+    "Hours of Operation": "7:00 AM - 9:00 PM",
+    "Contact Information": "(718) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "Centurion Lounge",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Terminal B",
+    "Location/Description": "Post-security, Level 3",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 525-3355"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "Starbucks",
+    "Category": "Café/Coffee Shop",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(718) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "Hudson News",
+    "Category": "Books & News",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "24/7 (select locations)",
+    "Contact Information": "(718) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "LaGuardia Airport (LGA)",
+    "Shop Name": "Pharmacy",
+    "Category": "Medical Services/Pharmacy",
+    "Terminal": "Terminal B",
+    "Location/Description": "Landside",
+    "Hours of Operation": "8:00 AM - 6:00 PM",
+    "Contact Information": "(718) 666-7777"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Wolfgang Puck Express",
+    "Category": "Casual Dining",
+    "Terminal": "Concourse A",
+    "Location/Description": "Near Gate A21",
+    "Hours of Operation": "6:00 AM - 9:00 PM",
+    "Contact Information": "(703) 111-2222"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Capitol News",
+    "Category": "Books & News",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Post-security",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(703) 222-3333"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Coach",
+    "Category": "Fashion/Apparel",
+    "Terminal": "Concourse D",
+    "Location/Description": "Near Gate D10",
+    "Hours of Operation": "8:00 AM - 8:00 PM",
+    "Contact Information": "(703) 333-4444"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "United Club",
+    "Category": "Lounges (Airline/Priority Pass)",
+    "Terminal": "Concourse C, D",
+    "Location/Description": "Various locations",
+    "Hours of Operation": "5:00 AM - 10:00 PM",
+    "Contact Information": "(800) 864-8331"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Duty Free Americas",
+    "Category": "Duty-Free",
+    "Terminal": "Concourse B",
+    "Location/Description": "Near Gate B50",
+    "Hours of Operation": "7:00 AM - 10:00 PM",
+    "Contact Information": "(703) 444-5555"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Currency Exchange",
+    "Category": "Currency Exchange",
+    "Terminal": "Main Terminal",
+    "Location/Description": "Arrivals Level",
+    "Hours of Operation": "6:00 AM - 10:00 PM",
+    "Contact Information": "(703) 555-6666"
+  },
+  {
+    "record": "",
+    "Airport Name": "Washington Dulles International Airport (IAD)",
+    "Shop Name": "Pet Relief Area",
+    "Category": "Pet Relief Area",
+    "Terminal": "Multiple Terminals",
+    "Location/Description": "Post-security outdoor areas",
+    "Hours of Operation": "24/7",
+    "Contact Information": "N/A"
+  }
+]

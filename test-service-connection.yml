@@ -1,0 +1,149 @@
+# Simple Test Pipeline for Airport Assistant ChatBot
+# Use this to test your Azure Service Connection before running the full deployment
+
+trigger: none # Manual trigger only
+
+parameters:
+- name: azureServiceConnection
+  displayName: 'Azure Service Connection Name'
+  type: string
+  default: 'Azure-Service-Connection'
+
+- name: subscriptionId
+  displayName: 'Azure Subscription ID'
+  type: string
+  default: ''
+
+- name: resourceGroupName
+  displayName: 'Resource Group Name'
+  type: string
+  default: 'rg-airport-assistant-test'
+
+variables:
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: TestConnection
+  displayName: 'Test Azure Connection'
+  jobs:
+  - job: TestAzureConnection
+    displayName: 'Test Azure Service Connection'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Test Azure CLI Connection'
+      inputs:
+        azureSubscription: ${{ parameters.azureServiceConnection }}
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🔍 Testing Azure connection..."
+          echo "Current subscription:"
+          az account show --output table
+          
+          echo "Available locations:"
+          az account list-locations --query "[?name=='eastus' || name=='westus2' || name=='centralus'].{Name:name, DisplayName:displayName}" --output table
+          
+          echo "✅ Azure connection test successful!"
+
+- stage: TestResourceGroup
+  displayName: 'Test Resource Group Operations'
+  dependsOn: TestConnection
+  condition: succeeded()
+  jobs:
+  - job: TestResourceGroup
+    displayName: 'Test Resource Group Creation'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Create Test Resource Group'
+      inputs:
+        azureSubscription: ${{ parameters.azureServiceConnection }}
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🏗️ Creating test resource group..."
+          
+          # Create resource group if it doesn't exist
+          if ! az group show --name "${{ parameters.resourceGroupName }}" &>/dev/null; then
+            echo "Creating resource group: ${{ parameters.resourceGroupName }}"
+            az group create --name "${{ parameters.resourceGroupName }}" --location "East US"
+            echo "✅ Resource group created successfully!"
+          else
+            echo "ℹ️ Resource group already exists: ${{ parameters.resourceGroupName }}"
+          fi
+          
+          # List resources in the group
+          echo "Resources in group:"
+          az resource list --resource-group "${{ parameters.resourceGroupName }}" --output table
+    
+    - task: AzureCLI@2
+      displayName: 'Cleanup Test Resource Group'
+      inputs:
+        azureSubscription: ${{ parameters.azureServiceConnection }}
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🧹 Cleaning up test resource group..."
+          
+          # Check if this is a test resource group before deleting
+          if [[ "${{ parameters.resourceGroupName }}" == *"test"* ]]; then
+            echo "Deleting test resource group: ${{ parameters.resourceGroupName }}"
+            az group delete --name "${{ parameters.resourceGroupName }}" --yes --no-wait
+            echo "✅ Test resource group deletion initiated!"
+          else
+            echo "⚠️ Skipping deletion - not a test resource group"
+          fi
+
+- stage: TestPermissions
+  displayName: 'Test Deployment Permissions'
+  dependsOn: TestConnection
+  condition: succeeded()
+  jobs:
+  - job: TestPermissions
+    displayName: 'Verify Required Permissions'
+    pool:
+      vmImage: $(vmImageName)
+    
+    steps:
+    - task: AzurePowerShell@5
+      displayName: 'Check Role Assignments'
+      inputs:
+        azureSubscription: ${{ parameters.azureServiceConnection }}
+        ScriptType: 'InlineScript'
+        Inline: |
+          Write-Host "🔐 Checking role assignments for service principal..."
+          
+          # Get current context
+          $context = Get-AzContext
+          Write-Host "Current subscription: $($context.Subscription.Name)"
+          Write-Host "Service principal: $($context.Account.Id)"
+          
+          # Check role assignments
+          $roleAssignments = Get-AzRoleAssignment -SignInName $context.Account.Id -ErrorAction SilentlyContinue
+          
+          if ($roleAssignments) {
+            Write-Host "✅ Role assignments found:"
+            foreach ($assignment in $roleAssignments) {
+              Write-Host "  - Role: $($assignment.RoleDefinitionName)"
+              Write-Host "    Scope: $($assignment.Scope)"
+            }
+          } else {
+            Write-Host "⚠️ No role assignments found. You may need to assign permissions."
+          }
+          
+          # Test specific permissions
+          Write-Host "Testing permissions..."
+          try {
+            $resourceGroups = Get-AzResourceGroup | Select-Object -First 5
+            Write-Host "✅ Can list resource groups ($($resourceGroups.Count) found)"
+          } catch {
+            Write-Host "❌ Cannot list resource groups: $($_.Exception.Message)"
+          }
+          
+          Write-Host "🎉 Permission check completed!"
+        azurePowerShellVersion: 'LatestVersion'
